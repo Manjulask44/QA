@@ -1,14 +1,32 @@
 
 1) Jenkins is building on dev branch and someone else is pushing the code, but the build is in progress.  If someone pushes the code, it triggers another build, so what will u do to stop the parallel build?
 2) How do you disable it in groovy script?
-3) How frequently u release a new feature ?  -- confirm the answer 
-		Weekly, fortnight, monthly 
-4) process of creating multibranch pipeline in jenkins -- Confirm the answer and possible Can skip this question 
+Declarative Script
+        pipeline {
+            options {
+                disableConcurrentBuilds()
+            }
+        }
+    Scripted 
+        node {
+          properties([disableConcurrentBuilds()])
+        }
+3) How frequently u release a new feature ? 
+Based on the application/project
+		There are major release and minor release 
+			Major updates may be quarterly (or) yearly depending on the application and project that we are associated with
+		           For test environment we release it frequently and it is deployed immediate, since we have a pipeline created
+4) process of creating multibranch pipeline in jenkins --
 		Option present in Build trigger 
 			Build after other projects are built
+			
 5) how do you use function in groovy script
+def call(String username = 'null', String designation = 'a') { 
+
 6) how will set the quality gates in sonar qube and how will you check quality of source code
+      google
 7) How you will do insights and analysis of your CICD?
+
 8) I have a jenkins pipeline where sonarqube is integrated with quality gates. But if the code doesnt passes through quality gates how will you fail the build and stop it     from creating artifacts.?
 9) explain your Jenkins setup like how many slaves you are maintaining -- Real Life scenario example explanation
 10) Real life scenarios on Canary deployment?
