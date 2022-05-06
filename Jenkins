@@ -1,20 +1,24 @@
 1  * Explain CI/CD  -- answer from rangaswamy 
 	As soon as developer pushes code to github. Jenkins pipeline job will get triggered, it has three stages, Build, Deploy and test stages.
-	In build stage, It will pull source code from github, compiles it and generates binary. Once build stage is success, deploy stage will get triggered
+	In build stage, It will pull source code from github, compiles it and generates binary. Once build stage is success, 
+	deploy stage will get triggered
 	It will deploy war file tom tomcat server and run BVT. Next,test stage will get triggered, it runs test cases given by test team. 
 	if there are any test failures will be taken care by testing team. if there are any integration issues , it will be taken care by dev team.
 									
 									(OR)
 									
-	As soon as a developer pushes the code, the code is reviewed by reviewer {Gerrit tool can be used to perform the code review} and then commit is performed, once a new commit occurs, it triggers a Jenkins job.
+	As soon as a developer pushes the code, the code is reviewed by reviewer {Gerrit tool can be used to perform the code review} and 
+	then commit is performed, once a new commit occurs, it triggers a Jenkins job.
 	Jenkins job consists of mainly 3 stages: Build, Deploy and Test stage
 	A webhook tells the CI/CD tool which commit triggers the pipeline, which checks out the source code at the appropriate commit point 
-	Build stage à CI/CD tool needs a build tool ( Maven (or) Gradel ), here it will pull the source code from GitHub, compiles it and generates binary, once build stage is success , Deploy stage is triggered 
+	Build stage à CI/CD tool needs a build tool ( Maven (or) Gradel ), here it will pull the source code from GitHub, compiles it and generates binary, 
+	once build stage is success , Deploy stage is triggered 
 	Deploy state à It will deploy a war file (web archive file) from tomcat server and run BVT (build verification test) 
 	Once BVT is successful, it will then move on to next phase, Test phase
 	Test Phase à Here test cases are run as provided by test team (sonarcube is used to validate the quality of the code) 
 		If any test failures then it will be checked by testing team, if there are any integration issue, it will be checked by development team 
-	Post which artifacts are passed into JFrog artifatory, from there UAT (User acceptance test) is performed, Selenium (or) cucumber can be used to perform the acceptance test.
+	Post which artifacts are passed into JFrog artifatory, from there UAT (User acceptance test) is performed, Selenium (or) 
+	cucumber can be used to perform the acceptance test.
 	
 	
 2  * How u setup cicd for these different features like u maintain separate jobs for separate feature branches 
@@ -28,12 +32,17 @@
 				Agent 
 				Stages 
 5  * Shared Libraries ?
-	Jenkins shared library is the concept of having common pipeline code in the version control system that can be used by any number of pipelines just by referring it. 
-	Eg – if we have 10 java micro services pipelines the maven build step will be duplicated in all 10 pipelines. On addition of new services, we have to copy paste pipeline code again. If we want to change some parameter we will need to do it in all the pipelines manually. 
+	Jenkins shared library is the concept of having common pipeline code in the version control system that can be used by any number of 
+	pipelines just by referring it. 
+	Eg – if we have 10 java micro services pipelines the maven build step will be duplicated in all 10 pipelines.
+	  On addition of new services, we have to copy paste pipeline code again. If we want to change some parameter
+	  we will need to do it in all the pipelines manually. 
 	When we use the shared library all the common code is kept there and if we update the code there it will appear in all the 10 pipelines. 
 	Jenkins shared library
-	1. vars – This directory holds all the global shared library code that can be called from a pipeline. It has all the library files with .groovy extn.
-	2. src – It’s a regular java source directory. It is added to the class path during every script compilation. Here we can add the custom groovy code to extend the shared library code.
+	1. vars – This directory holds all the global shared library code that can be called from a pipeline.
+	   It has all the library files with .groovy extn.
+	2. src – It’s a regular java source directory. It is added to the class path during every script compilation.
+	    Here we can add the custom groovy code to extend the shared library code.
 	3. Resources – all the non-groovy files required for the pipeline can be managed from here. Like jenkinsfile, xml etc. 
 	 
 6  * When to use free style and pipeline job
@@ -67,13 +76,15 @@
 		Need to make sure that we have GitHub plugin installed on Jenkins server
 		On Project --> Source Code Management --> select Git --> Give Repository URL 
 		Enable "GItHub hook trigger for GITScm Polling" and "Poll SCM"
-		On GitHUb --> Settings --> WebHook--> Add webhook --> Payload URL  (your repo link)--> Content type 'application/json' --> which even should trigger this webhook 'Just the push even' --> add webhook 
+		On GitHUb --> Settings --> WebHook--> Add webhook --> Payload URL  (your repo link)--> Content type 'application/json' -->
+		 which even should trigger this webhook 'Just the push even' --> add webhook 
 
 21  how to send email notification to jenkins
 
 		 Dashboard --> Manage Jenkins --> Configure System --> Extended E-mail Notification
 		Maven Build command in java - DO not know 
-			We have to run "maven clean package" from where ever we have our project/files but after that steps are longer and need to be practiced and done to explain
+			We have to run "maven clean package" from where ever we have our project/files but after that steps are longer and 
+			   need to be practiced and done to explain
 	
 21 * how to take backup of jenkinfile
 	Clone the Jenkins home directory/installation folder and then push to GitHub repository 
@@ -157,7 +168,8 @@
 	We would go to pipeline syntax --> Snippet generator  (or) Declarative Directive Generator 
 
 46 * Feature Flag in CICD
-	is a technique that will help you integrate code into a shared repository at least once a day and ship it, even if you haven't finished the feature yet.
+	is a technique that will help you integrate code into a shared repository at least once a day and ship it, 
+	even if you haven't finished the feature yet.
 
 58 * U have some issues in applications in Jenkins how will u find out 
 		/var/log/jenkins  
@@ -291,7 +303,10 @@
 
 106* whats the use of pom.xml file
 		==>  POM.xml is a xml file, which contains the project details along with configuration information which is used by Maven to perform builds
-		==> When "maven install" is done, maven creates a dependency tree based on the information from PO.xml and then downloads/compiles all the needed components    into a directory ".m2" under the user's fodler
+		
+		==> When "maven install" is done, maven creates a dependency tree based on the information from PO.xml and then downloads/compiles all 
+		     the needed components    into a directory ".m2" under the user's fodler
+		     
 107* maven build lifecycle
 	 
 	Maven Lifecycle steps
@@ -326,7 +341,8 @@
 		• On Project --> Source Code Management --> select Git --> Give Repository URL 
 		• Enable "GItHub hook trigger for GITScm Polling" and "Poll SCM"
 		 
-		• On GitHUb --> Settings --> WebHook--> Add webhook --> Payload URL  (your repo link)/git-webhook --> Content type 'application/json' --> which even should trigger this webhook 'Just the push even' --> add webhook 
+		• On GitHUb --> Settings --> WebHook--> Add webhook --> Payload URL  (your repo link)/git-webhook --> Content type 
+		     'application/json' --> which even should trigger this webhook 'Just the push even' --> add webhook 
 
  116* How authentication of Jenkins and git is done
 	Jenkins authentication 
@@ -455,7 +471,8 @@
 		○ Need to install the Amazon EC2 plugin in Jenkins 
 		○ Manage Jenkins --> Configure System --> Cloud section --> Add a new cloud button --> Select "Amazon EC2" option  
 		 Check the link for further understanding ==> https://plugins.jenkins.io/ec2/ 
-		○ So this will provide Jenkins with option of identifying cluster overload and deploy ec2 instances with Jenkins agents on them, once the cluster load is reduced , then it will delete the ec2 instnaces 
+		○ So this will provide Jenkins with option of identifying cluster overload and deploy ec2 instances with Jenkins agents on them, o
+		      nce the cluster load is reduced , then it will delete the ec2 instnaces 
 
 153* which instance type u r using for jenkins master, its details
 		Amazon ec2 ==>  c4.large, c4.xlarge
@@ -470,7 +487,8 @@
 
 161* multibranch pipeline ?
 		The Multibranch Pipeline project type enables you to implement different Jenkinsfiles for different branches of the same project.
-		In a Multibranch Pipeline project, Jenkins automatically discovers, manages and executes Pipelines for branches which contain a Jenkinsfile in source control.
+		In a Multibranch Pipeline project, Jenkins automatically discovers, manages and executes Pipelines for branches which contain a 
+		   Jenkinsfile in source control.
 
 162* How to setup multiple Java or Maven or Git versions in Jenkins server?
 		Manage Jenkins --> Global Tool configuration --> install the tool versions accordingly  
