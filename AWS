@@ -10,7 +10,8 @@
 		○ NAT Gateway
 		○ Elastic IP 
 	
-	Setting up VPC  - yes, explain the detailed process of creating subent, IGW, assigning subnet to routing table via subnet association, NAT gateway creation etc… etc..
+	Setting up VPC  - yes, explain the detailed process of creating subent, IGW, assigning subnet to routing table via subnet association, 
+                          NAT gateway creation etc… etc..
 	
 2  * Where you will set the Route Table ?
 	Under VPC we will set route table 
@@ -37,9 +38,9 @@
 
 5  * Cross region replication ? how you apply it ? will it copy automatically ?  -- Do it yourself , try to configure yourself to understand it better 
 
-		○  Cross-Region replication --> Having 2 S3 buckets on 2 different region and data written in source S3 bucket is replicated on destination S3 bucket
-		○  Will it copy automatically ? --> Yes, once replication is enabled, data is copied automatically on destination S3 but for only data which is 
-		   written after the replication is configured, data present in source S3 bucket prior to replication will not be made available/copied automatically 
+	○  Cross-Region replication --> Having 2 S3 buckets on 2 different region and data written in source S3 bucket is replicated on destination S3 bucket
+	○  Will it copy automatically ? --> Yes, once replication is enabled, data is copied automatically on destination S3 but for only data which is 
+	 written after the replication is configured, data present in source S3 bucket prior to replication will not be made available/copied automatically 
 		    on destination S3 bucket 
 
 7  * Read replica
@@ -70,8 +71,8 @@
 	Now login via the user and check the actions that can be performed for the accessible instances 
 
 18 * Cross region Route53 ?
-		○ Answer is Route53 Resolver, inbound endpoints, outbound endpoint 
-		○ Explanation is here --> https://aws.amazon.com/blogs/architecture/using-route-53-private-hosted-zones-for-cross-account-multi-region-architectures/
+	○ Answer is Route53 Resolver, inbound endpoints, outbound endpoint 
+	○ Explanation is here --> https://aws.amazon.com/blogs/architecture/using-route-53-private-hosted-zones-for-cross-account-multi-region-architectures/
 	
 19 * Health checks in Route53
 		○ Monitor the health and performance of the endpoints
@@ -83,7 +84,7 @@
 		Configuration needs to be checked
 
 21 * what is S3 and why customer choose S3 ?
-		S3 (Simple Storage Service) is an Object Oriented Storage, we can store any file, any amount of data, anytime from anywhere on the web as an "Object"
+	S3 (Simple Storage Service) is an Object Oriented Storage, we can store any file, any amount of data, anytime from anywhere on the web as an "Object"
 		Why S3:
 			Easily accessible from anywhere (URL can be accessed by end user)
 			Any amount of data can be written to it 
